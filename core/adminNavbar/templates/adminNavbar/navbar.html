@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Village Information System{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #edf7ed; /* Light green background */
+            color: #000; /* Black font color */
+        }
+
+        .navbar {
+            background-color: #5cb85c; /* Darker green for navbar */
+            color: #fff;
+        }
+
+        .navbar a {
+            color: #fff;
+        }
+
+        .sidebar {
+            background-color: #5cb85c; /* Darker green for sidebar */
+            color: #fff;
+            height: 100vh;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            color: #fff;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #4cae4c; /* Slightly darker green on hover */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .content {
+            padding: 20px;
+            color: #000;
+        }
+
+        .footer {
+            background-color: #5cb85c; /* Darker green for footer */
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        h2 {
+            color: #3c3c3c;
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-img-top {
+            max-height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img-top {
+            transform: rotate(15deg);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .card-text {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Village Information System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-user-circle icon"></i> Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-sign-out-alt icon"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-none d-md-block sidebar">
+            <div class="sidebar-sticky">
+                <a href="#" class="nav-link active"><i class="fas fa-tachometer-alt icon"></i> Dashboard</a>
+                <a href="#" class="nav-link"><i class="fas fa-users icon"></i> Users</a>
+                <a href="#" class="nav-link"><i class="far fa-calendar-alt icon"></i> Events</a>
+                <a href="#" class="nav-link"><i class="fas fa-cogs icon"></i> Services</a>
+            </div>
+        </nav>
+        {% block content %}
+
+
+        <!-- Main Content -->
+        <!-- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="content">
+                <h2 class="mb-4"><i class="fas fa-tachometer-alt icon"></i> Dashboard</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="https://via.placeholder.com/150" alt="Total Users">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-users icon"></i> Total Users</h5>
+                                <p class="card-text">1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="https://via.placeholder.com/150" alt="Upcoming Events">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="far fa-calendar-alt icon"></i> Upcoming Events</h5>
+                                <p class="card-text">5 events scheduled</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="https://via.placeholder.com/150" alt="Active Services">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-cogs icon"></i> Active Services</h5>
+                                <p class="card-text">20 services available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main> -->
+
+    </div>
+</div>
+{% endblock %}
+
+<!-- Footer -->
+<div class="footer">
+    <p class="text-center">Village Information System &copy; 2024</p>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn

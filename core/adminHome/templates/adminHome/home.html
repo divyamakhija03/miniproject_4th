@@ -1,0 +1,39 @@
+{% extends 'adminNavbar/navbar.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Content -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="content">
+        <h2 class="mb-4"><i class="fas fa-tachometer-alt icon"></i> Dashboard</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://via.placeholder.com/150" alt="Total Users">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-users icon"></i> Total Users</h5>
+                        <p class="card-text">1500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://via.placeholder.com/150" alt="Upcoming Events">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="far fa-calendar-alt icon"></i> Upcoming Events</h5>
+                        <p class="card-text">5 events scheduled</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://via.placeholder.com/150" alt="Active Services">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-cogs icon"></i> Active Services</h5>
+                        <p class="card-text">20 services available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
