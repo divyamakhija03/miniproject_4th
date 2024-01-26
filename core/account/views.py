@@ -48,7 +48,7 @@ def admin(request):
 
 
 def userPerson(request):
-    return render(request,'user.html')
+    return render(request,'homeApp/home.html')
 
 
 

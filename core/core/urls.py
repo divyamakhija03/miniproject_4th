@@ -25,4 +25,8 @@ urlpatterns = [
     path('adminNav/',include('adminNavbar.urls')),
     path('adminHome/',include('adminHome.urls')),
     path('admin/', admin.site.urls),
+    path('home/',include(('homeApp.urls', 'homeApp'), namespace='homeApp')),
+    path('womenWelfare/',include(('womenWelfareApp.urls','womenWelfareApp'),namespace='womenWelfareApp')),
+
+
 ]

@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'adminNavbar',
     'adminHome',
+    'homeApp',
+    'womenWelfareApp',
+    'grievanceApp'
 
 ]
 
@@ -81,12 +84,15 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'village',
-        'USER': 'root',
-        'PASSWORD': 'makhija1996',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'village',  
+        'USER': 'root',  
+        'PASSWORD': 'Vanshika@123',  
+        'HOST': '127.0.0.1',  
+        'PORT': '3306',  
+        'OPTIONS': {  
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        }  
     }
 }
 
