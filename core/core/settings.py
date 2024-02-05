@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'womenWelfareApp',
     'grievanceApp',
     'govtServices',
-    'govtEvents'
+    'govtEvents',
+    'income'
 
 ]
 
@@ -87,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'village',  
         'USER': 'root',  
-        'PASSWORD': 'Vanshika@123',  
+        'PASSWORD': 'Jas@0425',  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
