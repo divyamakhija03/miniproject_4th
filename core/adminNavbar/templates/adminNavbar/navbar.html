@@ -138,8 +138,8 @@
             <div class="sidebar-sticky">
                 <a href="#" class="nav-link active"><i class="fas fa-tachometer-alt icon"></i> Dashboard</a>
                 <a href="#" class="nav-link"><i class="fas fa-users icon"></i> Users</a>
-                <a href="#" class="nav-link"><i class="far fa-calendar-alt icon"></i> Events</a>
-                <a href="#" class="nav-link"><i class="fas fa-cogs icon"></i> Services</a>
+                <a href="{% url 'govtEvents:eventPage'%}" class="nav-link"><i class="far fa-calendar-alt icon"></i> Events</a>
+                <a href="{% url 'govtServices:servicePage' %}" class="nav-link"><i class="fas fa-cogs icon"></i> Services</a>
             </div>
         </nav>
         {% block content %}

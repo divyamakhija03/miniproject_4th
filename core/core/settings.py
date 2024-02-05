@@ -37,14 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'home',
-    # 'authentication',
     'account.apps.AccountConfig',
     'adminNavbar',
     'adminHome',
     'homeApp',
     'womenWelfareApp',
-    'grievanceApp'
+    'grievanceApp',
+    'govtServices',
+    'govtEvents'
 
 ]
 

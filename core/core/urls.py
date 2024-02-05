@@ -27,6 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/',include(('homeApp.urls', 'homeApp'), namespace='homeApp')),
     path('womenWelfare/',include(('womenWelfareApp.urls','womenWelfareApp'),namespace='womenWelfareApp')),
-
+    path('govtServices/',include(('govtServices.urls','govtServices'),namespace='govtServices')),
+    path('govtEvents/',include(('govtEvents.urls','govtEvents'),namespace='govtEvents')),
+    
 
 ]
