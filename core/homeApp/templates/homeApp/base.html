@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'villageapp/style.css'%}">
+    <link rel="stylesheet" href="{% static 'villageapp/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,8 +19,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"   />
     <style>
         nav>a {
-            margin-left: 50px;
+            margin-left: 20px; /* Adjust as needed */
         }
+        body {
+    overflow-x: hidden;
+}
     </style>
 </head>
 
@@ -28,9 +31,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'homeApp:homePage'%}">Home</a>
         <a class="navbar-brand" href="{% url 'womenWelfareApp:womenWelfarePage' %}">Women-Welfare</a>
-        <a class="navbar-brand" href="">Greviances</a>
+        <a class="navbar-brand" href="">Grievances</a>
         <a class="navbar-brand" href="">Utility</a>
-        <a style="margin-left: 800px;" class="navbar-brand" href="{% url 'account:register' %}">Register</a>
+        <a class="navbar-brand" href="{% url 'account:register' %}">Register</a>
         <a class="navbar-brand" href="{% url 'account:login_view' %}">Login</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -43,9 +46,9 @@
 
     </nav>
 
+    {% block content %}
+
+    {% endblock %}
 </body>
+
 </html>
-
-{% block content %}
-
-{% endblock %}
