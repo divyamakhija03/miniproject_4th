@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import SignUpForm, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login 
+from django.contrib.auth import logout as auth_logout
 
 
 # Create your views here.
@@ -14,7 +15,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             msg = 'user created'
-            return redirect('login_view')
+            return redirect('account:login_view')
         else:
             msg = 'form is not valid'
     else:
@@ -32,10 +33,10 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None and user.is_admin:
                 login(request, user)
-                return redirect('adminpage')
+                return redirect('account:adminpage')
             elif user is not None and user.is_user:
                 login(request, user)
-                return redirect('userpage')
+                return redirect('account:userpage')
             else:
                 msg= 'invalid credentials'
         else:
@@ -50,6 +51,10 @@ def admin(request):
 def userPerson(request):
     return render(request,'homeApp/home.html')
 
+def custom_logout(request):
+    auth_logout(request)
+    # You can customize the redirect URL after logout
+    return redirect('homeApp:homePage')
 
 
 

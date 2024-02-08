@@ -1,6 +1,6 @@
 {% include 'homeApp/base.html' %}
-
 {% load static %}
+
 
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -49,6 +49,7 @@
     <body>
 	
 		
+		{% block content %}
 		<!-- Get Pro Button -->
 		
 		<!-- Header Area -->
@@ -371,6 +372,7 @@
 		<!--/ End Footer Area -->
 		
 		<!-- jquery Min JS -->
-     
+		
+		{% endblock %}
     </body>
 </html>

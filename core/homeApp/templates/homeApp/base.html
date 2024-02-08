@@ -19,7 +19,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"   />
     <style>
         nav>a {
-            margin-left: 20px; /* Adjust as needed */
+            margin-left: 20px;
+            margin-bottom: 0%;
         }
         body {
     overflow-x: hidden;
@@ -29,23 +30,27 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'homeApp:homePage'%}">Home</a>
-        <a class="navbar-brand" href="{% url 'womenWelfareApp:womenWelfarePage' %}">Women-Welfare</a>
-        <a class="navbar-brand" href="">Grievances</a>
-        <a class="navbar-brand" href="">Utility</a>
-        <a class="navbar-brand" href="{% url 'account:register' %}">Register</a>
-        <a class="navbar-brand" href="{% url 'account:login_view' %}">Login</a>
+        <a class="navbar-brand" href="{% url 'homeApp:homePage'%}"><i class="fas fa-home"></i> Home</a>
+        <a class="navbar-brand" href="{% url 'womenWelfareApp:womenWelfarePage' %}"><i class="fas fa-female"></i> Women-Welfare</a>
+        <a class="navbar-brand" href="{% url 'grievance_form' %}"><i class="fas fa-exclamation-triangle"></i> Grievances</a>
+        <a class="navbar-brand" href="{% url 'predict_farming_income' %}"><i class="fas fa-tools"></i> Utility</a>
+        <a class="navbar-brand" href="{% url 'account:register' %}"><i class="fas fa-user-plus"></i> Register</a>
+        {% if user.is_authenticated %}
+        <a href="" class="navbar-brand"><i class="fas fa-users icon"></i> View Profile</a>
+        <a class="navbar-brand" href="{% url 'account:custom_logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        {% else %}
+        <a class="navbar-brand" href="{% url 'account:login_view' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+        {% endif %}
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+    
         <div style="font-weight: 400;" class="collapse navbar-collapse" id="navbarSupportedContent">
         </div>
-
     </nav>
-
+    
     {% block content %}
 
     {% endblock %}

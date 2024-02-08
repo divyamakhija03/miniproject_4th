@@ -13,100 +13,103 @@
 
     <!-- Custom CSS -->
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #edf7ed; /* Light green background */
-            color: #000; /* Black font color */
-        }
+       /* Custom cool and sober color tones for the dashboard */
+/* Custom cool and sober color tones for the dashboard */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* Light gray background */
+    color: #333; /* Dark gray font color */
+}
 
-        .navbar {
-            background-color: #5cb85c; /* Darker green for navbar */
-            color: #fff;
-        }
+.navbar {
+    background-color: #7a8989; /* Muted blue-gray for navbar */
+    color: #fff;
+}
 
-        .navbar a {
-            color: #fff;
-        }
+.navbar a {
+    color: #fff;
+}
 
-        .sidebar {
-            background-color: #5cb85c; /* Darker green for sidebar */
-            color: #fff;
-            height: 100vh;
-            padding-top: 20px;
-        }
+.sidebar {
+    background-color: #7a8989; /* Muted blue-gray for sidebar */
+    color: #fff;
+    height: 100vh;
+    padding-top: 20px;
+}
 
-        .sidebar a {
-            padding: 15px;
-            color: #fff;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
+.sidebar a {
+    padding: 15px;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
 
-        .sidebar a:hover {
-            background-color: #4cae4c; /* Slightly darker green on hover */
-            color: #fff;
-            text-decoration: none;
-        }
+.sidebar a:hover {
+    background-color: #5f7f8e; /* Slightly darker muted blue-gray on hover */
+    color: #fff;
+    text-decoration: none;
+}
 
-        .content {
-            padding: 20px;
-            color: #000;
-        }
+.content {
+    padding: 20px;
+    color: #333;
+}
 
-        .footer {
-            background-color: #5cb85c; /* Darker green for footer */
-            color: #fff;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+.footer {
+    background-color: #7a8989; /* Muted blue-gray for footer */
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
-        h2 {
-            color: #3c3c3c;
-        }
+h2 {
+    color: #3c3c3c;
+}
 
-        .icon {
-            font-size: 24px;
-            margin-right: 10px;
-        }
+.icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
 
-        .card {
-            margin-bottom: 20px;
-            border: none;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+.card {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
 
-        .card:hover {
-            transform: scale(1.02);
-        }
+.card:hover {
+    transform: scale(1.02);
+}
 
-        .card-img-top {
-            max-height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+.card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-        .card:hover .card-img-top {
-            transform: rotate(15deg);
-        }
+.card:hover .card-img-top {
+    transform: rotate(15deg);
+}
 
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #000;
-        }
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
 
-        .card-text {
-            font-size: 1.2rem;
-            color: #666;
-        }
+.card-text {
+    font-size: 1.2rem;
+    color: #666;
+}
 
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
     </style>
 </head>
 <body>
@@ -119,12 +122,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-user-circle icon"></i> Profile</a>
+                <a class="nav-link" href="{% url 'account:custom_logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
+            {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-sign-out-alt icon"></i> Logout</a>
+                <a class="nav-link" href="{% url 'account:login_view' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
@@ -136,51 +142,19 @@
         <!-- Sidebar -->
         <nav class="col-md-2 d-none d-md-block sidebar">
             <div class="sidebar-sticky">
-                <a href="#" class="nav-link active"><i class="fas fa-tachometer-alt icon"></i> Dashboard</a>
-                <a href="#" class="nav-link"><i class="fas fa-users icon"></i> Users</a>
-                <a href="#" class="nav-link"><i class="far fa-calendar-alt icon"></i> Events</a>
-                <a href="#" class="nav-link"><i class="fas fa-cogs icon"></i> Services</a>
+                <a href="{% url 'adminhome'%}" class="nav-link active"><i class="fas fa-tachometer-alt icon"></i> Dashboard</a>
+                <a href="{% url 'govtEvents:eventPage'%}" class="nav-link"><i class="far fa-calendar-alt icon"></i> Events</a>
+                <a href="{% url 'govtServices:servicePage' %}" class="nav-link"><i class="fas fa-cogs icon"></i> Services</a>
+                <a href="{% url 'womenWelfareApp:womenWelfarePage' %}" class="nav-link"><i class="fas fa-female icon"></i> Women-Welfare</a>
+                <a href="{% url 'grievance_form' %}" class="nav-link"><i class="fas fa-exclamation-triangle icon"></i> Grievances</a>
+                <a href="{% url 'predict_farming_income' %}" class="nav-link"><i class="fas fa-tools icon"></i> Utility</a>
             </div>
         </nav>
+        
         {% block content %}
 
 
-        <!-- Main Content -->
-        <!-- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="content">
-                <h2 class="mb-4"><i class="fas fa-tachometer-alt icon"></i> Dashboard</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="https://via.placeholder.com/150" alt="Total Users">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-users icon"></i> Total Users</h5>
-                                <p class="card-text">1500</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="https://via.placeholder.com/150" alt="Upcoming Events">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="far fa-calendar-alt icon"></i> Upcoming Events</h5>
-                                <p class="card-text">5 events scheduled</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="https://via.placeholder.com/150" alt="Active Services">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-cogs icon"></i> Active Services</h5>
-                                <p class="card-text">20 services available</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main> -->
-
+       
     </div>
 </div>
 {% endblock %}

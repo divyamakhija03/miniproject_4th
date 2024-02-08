@@ -20,6 +20,20 @@ class LoginForm(forms.Form):
 
 
 class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
     username = forms.CharField(
         widget=forms.TextInput(
             attrs={

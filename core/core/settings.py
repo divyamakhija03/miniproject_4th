@@ -40,18 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'home',
-    # 'authentication',
     'account.apps.AccountConfig',
     'adminNavbar',
     'adminHome',
     'homeApp',
     'womenWelfareApp',
     'complaintApp',
+    'govtServices',
+    'govtEvents',
+    'income',
+    'chartjs',
+    'ViewProfile'
     
-    
-    
-    
+
 
 ]
 
@@ -74,7 +75,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS':  [],
+        'DIRS':  [os.path.join(BASE_DIR, 'TEMPLATES')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -154,14 +155,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'account.User'
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
-
-
-
 LANGUAGES = [
     ('en', _('English')),
     ('hi', _('Hindi')),
     ('mr', _('Marathi')),
 ]
 
-LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
