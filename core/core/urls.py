@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include,path
 
+from account import views
+
 
 urlpatterns = [
+
     # path('',home ,name="home"),
     # path('success-page/' ,success_page ,name="success_page"),
     path('', include('account.urls')),
@@ -30,6 +33,10 @@ urlpatterns = [
     path('womenWelfare/',include(('womenWelfareApp.urls','womenWelfareApp'),namespace='womenWelfareApp')),
     path('govtServices/',include(('govtServices.urls','govtServices'),namespace='govtServices')),
     path('govtEvents/',include(('govtEvents.urls','govtEvents'),namespace='govtEvents')),
+    path('grievance/',include('complaintApp.urls')),
+    # path('view/',include('ViewProfile.urls')),
+    
+    
     
 
 ]

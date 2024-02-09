@@ -16,6 +16,9 @@ print(sys.path)
 
 from pathlib import Path
 from decouple import config
+import os
+from django.utils.translation import gettext_lazy as _
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,10 +57,14 @@ INSTALLED_APPS = [
     'adminHome',
     'homeApp',
     'womenWelfareApp',
-    'grievanceApp',
+    'complaintApp',
     'govtServices',
     'govtEvents',
-    'income'
+    'income',
+    'chartjs',
+    'ViewProfile'
+    
+
 
 ]
 
@@ -69,6 +76,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    
+    
+
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -76,7 +87,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS':  [os.path.join(BASE_DIR, 'TEMPLATES')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,6 +151,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+# USE_L10N = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -152,3 +165,15 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.User'
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+LANGUAGES = [
+    ('en', _('English')),
+    ('hi', _('Hindi')),
+    ('mr', _('Marathi')),
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+

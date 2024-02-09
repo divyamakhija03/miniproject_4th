@@ -3,6 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
     path('predict',views.predict_farming_income,name='predict_farming_income')
 ]
