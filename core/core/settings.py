@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import sys
+print(sys.path)
+
+
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +31,13 @@ SECRET_KEY = 'django-insecure-=5%lw8zb_z=h$cv6v1ehw^)n3-sgb7j@3+a(j@(7ozey1q2ds4
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+TWILIO_ACCOUNT_SID = config('MY_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN')
+TWILIO_NUMBER = config('MY_TWILIO_NUMBER')
+SMS_BROADCAST_TO_NUMBERS = [
+   "+918459182791"
+]
 
 
 # Application definition
@@ -88,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'village',  
         'USER': 'root',  
-        'PASSWORD': 'Jas@0425',  
+        'PASSWORD': 'Vanshika@123',  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
