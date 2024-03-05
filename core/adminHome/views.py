@@ -9,22 +9,22 @@ def adminhome(request):
     resolution_data = Griv.objects.values('preferred_resolution').annotate(count=Count('id'))
     status_data = Griv.objects.values('status').annotate(count=Count('id'))
 
-    # Convert QuerySets to lists of dictionaries
-    gender_data_list = list(gender_data)
-    resolution_data_list = list(resolution_data)
-    status_data_list = list(status_data)
-
+    print('Gender Data:', list(gender_data))
+    print('Resolution Data:', list(resolution_data))
+    print('Status Data:', list(status_data))
+    
     context = {
-        'gender_data': json.dumps(gender_data_list),
-        'resolution_data': json.dumps(resolution_data_list),
-        'status_data': json.dumps(status_data_list),
-        'grievances': Griv.objects.all(),
+        'gender_data': json.dumps(list(gender_data),safe=False),
+        'resolution_data': json.dumps(list(resolution_data),safe=False),
+        'status_data': json.dumps(list(status_data),safe=False)
     }
     return render(request,'adminHome/home.html',context)
 
 
 # Create your views here.
 # in views.py (sixth app)
+
+
 
 
 

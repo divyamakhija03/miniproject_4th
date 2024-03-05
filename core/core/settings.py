@@ -10,9 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import sys
-print(sys.path)
-
 
 from pathlib import Path
 from decouple import config
@@ -32,6 +29,9 @@ SECRET_KEY = 'django-insecure-=5%lw8zb_z=h$cv6v1ehw^)n3-sgb7j@3+a(j@(7ozey1q2ds4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+RAZOR_KEY_ID = "rzp_test_AHnYgvoKiz8X3E"
+RAZOR_KEY_SECRET = "lJHVLIVhsU9jhZJe2O8F1iTU"
 
 ALLOWED_HOSTS = []
 
@@ -62,10 +62,9 @@ INSTALLED_APPS = [
     'govtEvents',
     'income',
     'chartjs',
-    'ViewProfile'
+    'ViewProfile',
+    'paymentApp'
     
-
-
 ]
 
 MIDDLEWARE = [

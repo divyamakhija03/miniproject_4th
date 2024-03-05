@@ -10,8 +10,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <!-- Google Fonts - Poppins -->
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
     <style>
         body {
@@ -116,7 +117,7 @@
                         <img class="card-img-top" src="https://via.placeholder.com/150" alt="Total Users">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-users icon"></i> Total Users</h5>
-                            <p class="card-text">1500</p>
+                            <p class="card-text">3</p>
                         </div>
                     </div>
                 </div>
@@ -125,7 +126,7 @@
                         <img class="card-img-top" src="https://via.placeholder.com/150" alt="Upcoming Events">
                         <div class="card-body">
                             <h5 class="card-title"><i class="far fa-calendar-alt icon"></i> Upcoming Events</h5>
-                            <p class="card-text">5 events scheduled</p>
+                            <p class="card-text">1 events scheduled</p>
                         </div>
                     </div>
                 </div>
@@ -134,36 +135,7 @@
                         <img class="card-img-top" src="https://via.placeholder.com/150" alt="Active Services">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-cogs icon"></i> Active Services</h5>
-                            <p class="card-text">20 services available</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chart-row">
-                <div class="chart-col" >
-                    <div class="card" style="height: 400px;">
-                        <div class="card-body chart-container" style="padding-bottom: 60px;">
-                            <h5 class="card-title">Gender Chart</h5>
-                            <canvas id="genderChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="chart-col">
-                    <div class="card"  style="height: 400px;">
-                        <div class="card-body chart-container" style="padding-bottom: 60px;">
-                            <h5 class="card-title">Resolution Chart</h5>
-                            <canvas id="resolutionChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="card" style="height: 400px;width: 700px;">
-                        <div class="card-body chart-container" style="padding-bottom: 60px;">
-                            <h5 class="card-title">Status Distribution</h5>
-                            <canvas id="statusChart"></canvas>
+                            <p class="card-text">1 services available</p>
                         </div>
                     </div>
                 </div>
@@ -174,16 +146,17 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>
             // JavaScript code to initialize and update Chart.js charts
+        // Parse JSON data for gender distribution
         
-            // Parse JSON data for gender distribution
-            var genderData = JSON.parse('{{ gender_data|safe }}');
+        var genderData = JSON.parse('{{ gender_data|safe }}') || [];
         
-            // Parse JSON data for preferred resolution distribution
-            var resolutionData = JSON.parse('{{ resolution_data|safe }}');
-        
-            // Parse JSON data for status distribution
-            var statusData = JSON.parse('{{ status_data|safe }}');
-        
+        console.log('Gender Data:', genderData);
+        // Parse JSON data for preferred resolution distribution
+        var resolutionData = JSON.parse('{{ resolution_data|safe }}') || [];
+
+        // Parse JSON data for status distribution
+        var statusData = JSON.parse('{{ status_data|safe }}') || [];
+
             // Function to animate charts
             function animateCharts() {
                 var charts = [genderChart, resolutionChart, statusChart];
@@ -216,23 +189,6 @@
                     datasets: [{
                         data: resolutionData.map(item => item.count),
                         backgroundColor: ['green', 'yellow', 'orange'],
-                    }],
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                },
-            });
-        
-            // Initialize and update Chart.js chart for status distribution
-            var statusCtx = document.getElementById('statusChart').getContext('2d');
-            var statusChart = new Chart(statusCtx, {
-                type: 'polarArea', // Use polar area chart for a different look
-                data: {
-                    labels: statusData.map(item => item.status === 0 ? 'Pending' : 'Resolved'),
-                    datasets: [{
-                        data: statusData.map(item => item.count),
-                        backgroundColor: ['red', 'lime'],
                     }],
                 },
                 options: {

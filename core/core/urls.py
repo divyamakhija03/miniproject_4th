@@ -34,7 +34,8 @@ urlpatterns = [
     path('govtServices/',include(('govtServices.urls','govtServices'),namespace='govtServices')),
     path('govtEvents/',include(('govtEvents.urls','govtEvents'),namespace='govtEvents')),
     path('grievance/',include('complaintApp.urls')),
-    # path('view/',include('ViewProfile.urls')),
+    path('utility/',include(('paymentApp.urls','paymentApp'),namespace='paymentApp')),
+    
     
     
     
